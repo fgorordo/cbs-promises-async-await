@@ -1,0 +1,2 @@
+## Ejercicios de async/await, promises, callback
+El ejempl de async_paralelo se toma el pedido y se ejecuta una promesa (lo que tarda en prepararse el pedido) cuando este pedido esta finalizado resuelve la promesa y sirve el producto

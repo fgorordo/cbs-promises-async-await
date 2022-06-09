@@ -1,0 +1,95 @@
+const util = require('util')
+const time = util.promisify(setTimeout)
+
+let stocks = {
+  fruits: ['Strawberry', 'Grapes', 'Banana', 'Apple'],
+  liquid: ['Water','Ice'],
+  holder: ['Cone', 'Cup', 'Stick'],
+  toppings: ['Chocolate', 'Peanuts'],
+};
+
+let kitchen = {
+  async fruitSelect () {
+    try {
+      await time(2000)
+      console.log(`${stocks.fruits[0]} was selected`)
+    }catch (e) {
+      console.log(e)
+    }
+  },
+
+  async startProduction () {
+    try {
+      await time(0000)
+      console.log('Production has started - Kitchen job')
+    }catch (e) {
+      console.log(e)
+    }
+  },
+
+  async chopFruit () {
+    try {
+      await time(2000)
+      console.log('The fruit has been chopped - Kitchen job')
+    }catch (e) {
+      console.log(e)
+    }
+  },
+
+  async addLiquids () {
+    try {
+      await time(1000)
+      console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} was added - Kitchen job`)
+    }catch (e) {
+      console.log(e)
+    }
+  },
+
+  async startMachine () {
+    try {
+      await time(1000)
+      console.log('The machine has been started - Kitchen job')
+    }catch (e) {
+      console.log(e)
+    }
+  },
+
+  async setHolder() {
+    try {
+      await time(2000)
+      console.log(`Ice cream was placed on ${stocks.holder[0]} - Kitchen job`)
+    } catch (e) {
+      console.log(e)
+    }
+  },
+
+  async addToppings() {
+    try {
+      await time(3000)
+      console.log(`${stocks.toppings[0]} was added as toppings - Kitchen job`)
+    } catch (e) {
+      console.log(e)
+    }
+  },
+
+  async serveIceCream () {
+    try {
+      await time(2000)
+      console.log('Serve ice cream')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+async function main () {
+  console.time('Measuring time');
+  await kitchen.fruitSelect()
+  await Promise.all([kitchen.startProduction(),kitchen.chopFruit(),kitchen.addLiquids(),kitchen.startMachine(),kitchen.setHolder(),kitchen.addToppings()])
+  await kitchen.serveIceCream()
+  console.timeEnd('Measuring time')
+
+}
+
+
+main()
